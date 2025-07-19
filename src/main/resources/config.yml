@@ -1,5 +1,6 @@
 sensory:
   cooldown-seconds: 10
+  show-distance: true
   permission-bonus:
     novice: 100
     intermediate: 200

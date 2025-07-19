@@ -23,15 +23,14 @@ public class SensoryCommand implements CommandExecutor {
     @Override
     public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
         if (!(sender instanceof Player player)) {
-            sender.sendMessage("§cOnly players can use this command.");
+            sender.sendMessage(ChatColor.RED + "Only players can use this command.");
             return true;
         }
 
         if (args.length != 1) {
-            player.sendMessage("§cUsage: /sensory <distance>");
+            player.sendMessage(ChatColor.RED + "Usage: /sensory <distance>");
             return true;
         }
-
 
         long now = System.currentTimeMillis();
         long lastUsed = cooldowns.getOrDefault(player.getUniqueId(), 0L);
@@ -41,7 +40,6 @@ public class SensoryCommand implements CommandExecutor {
             player.sendMessage(ChatColor.RED + "You must wait " + secondsLeft + " seconds to use sensory again.");
             return true;
         }
-
 
         int inputDistance;
         try {
@@ -79,7 +77,15 @@ public class SensoryCommand implements CommandExecutor {
         String direction = getDirectionTo(origin, closest.getLocation());
         int chakra = statManager.getCurrent(closest.getUniqueId(), "chakra");
 
-        player.sendMessage(ChatColor.DARK_PURPLE + "You sense someone " + direction + ChatColor.DARK_PURPLE + ", their chakra is " + ChatColor.DARK_AQUA + chakra + ChatColor.DARK_PURPLE + ".");
+        player.sendMessage(ChatColor.DARK_PURPLE + "You sense someone " + direction +
+                ChatColor.DARK_PURPLE + ", their chakra is " +
+                ChatColor.DARK_AQUA + chakra + ChatColor.DARK_PURPLE + ".");
+
+        boolean showDistance = plugin.getConfig().getBoolean("sensory.show-distance", true);
+        if (showDistance) {
+            player.sendMessage(ChatColor.GRAY + "(Distance: " + (int) closestDistance + " blocks)");
+        }
+
         cooldowns.put(player.getUniqueId(), now);
         return true;
     }
