@@ -25,7 +25,6 @@ public final class GaidenUtils extends JavaPlugin {
 
         getCommand("distance").setTabCompleter(new DistanceTabCompleter());
         getCommand("gaidenutils").setTabCompleter(new GaidenReloadTabCompleter());
-
         getCommand("stamina").setTabCompleter(new StatTabCompleter());
         getCommand("chakra").setTabCompleter(new StatTabCompleter());
         getCommand("sensory").setTabCompleter(new SensoryTabCompleter());
