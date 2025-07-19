@@ -1,0 +1,34 @@
+name: GaidenUtils
+version: '1.0-SNAPSHOT'
+main: me.remsq.gaidenUtils.GaidenUtils
+api-version: '1.21'
+authors: [ Ashypookiebear ]
+description: This is a plugin that gives many different requested features from Gaiden Admins.
+enable: true
+
+commands:
+  gaidenutils:
+    description: Admin commands for GaidenUtils
+    usage: /<command> reload
+  stamina:
+    usage: /<command> <set|minus|reset|check> [amount|player]
+    description: Modify or check your stamina stat
+  chakra:
+    usage: /<command> <set|minus|reset|check> [amount|player]
+    description: Modify or check your chakra stat
+  sensory:
+    usage: /<command> <radius>
+    description: This will sense the closest player's chakra stat
+  distance:
+    description: Measure distance between two players
+    usage: /<command> <player1> <player2>
+  permissions:
+    gaidenutils.sensory.novice: #The true false is to set it to the default category if you didn't know-- first time working with permissions lol #
+      default: true
+      gaidenutils.sensory.intermediate:
+        default: false
+      gaidenutils.sensory.master:
+        default: false
+    gaidenutils.reload:
+      default: op
+      description: Allows reloading the GaidenUtils config

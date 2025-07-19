@@ -1,0 +1,8 @@
+sensory:
+  cooldown-seconds: 10
+  permission-bonus:
+    novice: 100
+    intermediate: 200
+    master: 300
+distance:
+  max-distance: 50
