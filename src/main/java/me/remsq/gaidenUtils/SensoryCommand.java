@@ -92,15 +92,23 @@ public class SensoryCommand implements CommandExecutor {
 
     private int getMaxDistance(Player player) {
         FileConfiguration config = plugin.getConfig();
+        boolean debug = config.getBoolean("sensory.debug", false);
 
         if (player.hasPermission("gaidenutils.sensory.master")) {
-            return config.getInt("sensory.max-distance-permission.master", 300);
+            int val = config.getInt("sensory.max-distance-permission.master", 300);
+            Bukkit.getLogger().info("[GaidenUtils] " + player.getName() + " has 'master' permission. Using maxDistance=" + val);
+            return val;
         } else if (player.hasPermission("gaidenutils.sensory.intermediate")) {
-            return config.getInt("sensory.max-distance-permission.intermediate", 200);
+            int val = config.getInt("sensory.max-distance-permission.intermediate", 200);
+            Bukkit.getLogger().info("[GaidenUtils] " + player.getName() + " has 'intermediate' permission. Using maxDistance=" + val);
+            return val;
         } else if (player.hasPermission("gaidenutils.sensory.novice")) {
-            return config.getInt("sensory.max-distance-permission.novice", 100);
+            int val = config.getInt("sensory.max-distance-permission.novice", 100);
+            Bukkit.getLogger().info("[GaidenUtils] " + player.getName() + " has 'novice' permission. Using maxDistance=" + val);
+            return val;
         }
 
+        Bukkit.getLogger().info("[GaidenUtils] " + player.getName() + " has no sensory permission. Using maxDistance=0");
         return 0;
     }
 

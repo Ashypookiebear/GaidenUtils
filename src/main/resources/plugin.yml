@@ -9,7 +9,11 @@ enable: true
 commands:
   gaidenutils:
     description: Admin commands for GaidenUtils
-    usage: /<command> reload
+    usage: /<command> <reload|debug>
+    permissions:
+      gaidenutils.admin:
+        description: Allows use of GaidenUtils admin commands like reload and debug
+        default: op
   stamina:
     usage: /<command> <set|minus|reset|check> [amount|player]
     description: Modify or check your stamina stat

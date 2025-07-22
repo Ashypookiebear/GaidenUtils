@@ -8,11 +8,11 @@ import org.bukkit.plugin.java.JavaPlugin;
 
 public final class GaidenUtils extends JavaPlugin {
 
-
+    private static GaidenUtils instance;
 
     @Override
     public void onEnable() {
-
+        instance = this;
         saveDefaultConfig();
 
         StatManager statManager = new StatManager();
@@ -25,7 +25,6 @@ public final class GaidenUtils extends JavaPlugin {
 
         getCommand("distance").setTabCompleter(new DistanceTabCompleter());
         getCommand("gaidenutils").setTabCompleter(new GaidenReloadTabCompleter());
-
         getCommand("stamina").setTabCompleter(new StatTabCompleter());
         getCommand("chakra").setTabCompleter(new StatTabCompleter());
         getCommand("sensory").setTabCompleter(new SensoryTabCompleter());
@@ -33,6 +32,9 @@ public final class GaidenUtils extends JavaPlugin {
         System.out.println("GaidenUtils has loaded!");
     }
 
+    public  static  GaidenUtils getInstance() {
+        return instance;
+    }
     @Override
     public void onDisable() {
         System.out.println("GaidenUtils has been disabled.");
