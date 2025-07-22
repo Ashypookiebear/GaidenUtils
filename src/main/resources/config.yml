@@ -1,9 +1,10 @@
 sensory:
   cooldown-seconds: 10
   show-distance: true
-  permission-bonus:
+  max-distance-permission:
     novice: 100
     intermediate: 200
     master: 300
+  debug: false
 distance:
   max-distance: 50
