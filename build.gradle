@@ -4,7 +4,7 @@ plugins {
 }
 
 group = 'me.remsq'
-version = '1.0.2-VERSION'
+version = '1.0.3-VERSION'
 
 repositories {
     mavenCentral()
